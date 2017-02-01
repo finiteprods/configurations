@@ -23,7 +23,8 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion : variables
+                      auto-completion-enable-help-tooltip t)
      ;; better-defaults
      (colors :variables
              colors-enable-rainbow-identifiers t
@@ -35,6 +36,7 @@ values."
      haskell
      erlang
      elixir
+     python
      org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -75,7 +77,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -301,8 +303,18 @@ layers configuration. You are free to put any user code."
                             "::* "
                             (car (org-get-outline-path)))
                   org-archive-location)))
-           ad-do-it))
-     ))
+           ad-do-it))))
+
+  ;; erlang completion (Doesn't Work!)
+  ;; (eval-after-load 'erlang
+  ;;   '(progn
+  ;;      (push "~/.emacs.d/private/distel/elisp/" load-path)
+  ;;      (require 'distel)
+  ;;      (distel-setup)
+  ;;      (push "~/.emacs.d/private/distel-completion/" load-path)
+  ;;      (require 'company-distel)
+  ;;      (with-eval-after-load 'company
+  ;;        (add-to-list 'company-backends 'company-distel))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
